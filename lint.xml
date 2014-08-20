@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="MissingTranslation" severity="warning" />
+    <issue id="NewApi">
+        <ignore path="src/com/example/beans/MapTrackingBeans.java" />
+        <ignore path="src/com/example/mybtstracker/AddBtsActivity.java" />
+        <ignore path="src/com/example/mybtstracker/MapTrackingFragment.java" />
+    </issue>
+    <issue id="ValidFragment">
+        <ignore path="src/com/example/mybtstracker/AddBtsActivity.java" />
+        <ignore path="src/com/example/mybtstracker/MapTrackingFragment.java" />
+    </issue>
+</lint>

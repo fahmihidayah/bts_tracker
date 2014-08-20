@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tracking</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string-array name="list_action_bts">
+        <item>Info</item>
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
+    <string-array name="list_action_cell_id">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TrackingActivity" >
+
+    <!--
+     private String time;
+	private String LAC;
+	private String node;
+	private String cellId;
+	private String level;
+	private String latitude;
+	private String logitude;
+	private String networkType;
+	private double jarak;
+    -->
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Time : " />
+
+    <TextView
+        android:id="@+id/textViewLAC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="LAC : " />
+
+    <TextView
+        android:id="@+id/textViewNode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Node : " />
+
+    <TextView
+        android:id="@+id/textViewCellId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Cell Id : " />
+
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Level : " />
+
+    <TextView
+        android:id="@+id/textViewLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Latitude : " />
+
+    <TextView
+        android:id="@+id/textViewLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Longitude : " />
+
+    <TextView
+        android:id="@+id/textViewNetworkType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Network Type : " />
+
+    <TextView
+        android:id="@+id/textViewJarak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Jarak : " />
+
+</LinearLayout>
