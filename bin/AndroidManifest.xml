@@ -105,8 +105,8 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCsYr_Ehnnx73Zg6id6mplhx_8asgJCNqk" />
-            <!-- release AIzaSyCsYr_Ehnnx73Zg6id6mplhx_8asgJCNqk
+            android:value="AIzaSyA0nRtJ35LkyQTFGg0gN5PBgtehhsCj4nI" />
+            <!-- release AIzaSyDsW-UE2oQxO5Fr4LOd8Q1t1JWTV9vBU9I
             	debug  AIzaSyBI1x0UhwvC-jXSnSwqEdeg0RfpJy07GKo
             -->
             <uses-library android:name="com.google.android.maps" />
