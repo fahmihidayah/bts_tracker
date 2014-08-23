@@ -63,62 +63,68 @@ public class MapTrackingBeans implements Constants {
 	public void onMyLocationChange(Location location, GoogleMap googleMap, TelephonyManager telephonyManager) {
 		LatLng newLatLg = new LatLng(location.getLatitude(),
 				location.getLongitude());
-//		measureNearestBts(location);
-		if(currentLatLang == null){
-			currentLatLang = new LatLng(location.getLatitude(),
-					location.getLongitude());
-			return;
-		}
-//		if(isValidThreshold(currentLatLang, newLatLg)){
-//			Toast.makeText(mapTrackingFragment.getActivity(), "Location change", Toast.LENGTH_LONG).show();
-		String logitude = String.valueOf(location.getLongitude());
-		String latitude = String.valueOf(location.getLatitude());
-		String level = signalManager.getStringSignal();
-		String time = simpleDateFormat.format(new Date());
-		
-		TelephonyManager tm = (TelephonyManager) mapTrackingFragment.getActivity().getSystemService(mapTrackingFragment.getActivity().TELEPHONY_SERVICE);
-		GsmCellLocation locationGsm = (GsmCellLocation) tm.getCellLocation();
-		String cellId = String.valueOf(locationGsm.getCid());
-		String lac = String.valueOf(locationGsm.getLac());
-		String networkType = getNetworkType(tm);
-		
-		TrackingData data = new TrackingData();
-		data.setLogitude(logitude);
-		data.setLatitude(latitude);
-		data.setLevel(level);
-		data.setTime(time);
-		data.setLAC(lac);
-		data.setCellId(cellId);
-		data.setNetworkType(networkType);
-		findBtsHandler(locationGsm.getCid(), data, location);
-		DataSingleton.getInstance(mapTrackingFragment.getActivity()).getListTrackingData().add(data);
-		DataSingleton.getInstance(mapTrackingFragment.getActivity()).notifyDataChange();
-			if (signalManager.isChange()) {
-				
-				if(listLatLgs == null){
-					listLatLgs = new ArrayList<LatLng>();
-					listLatLgs.add(new LatLng(location.getLatitude(),
-						location.getLongitude()));
-				}
-				LatLng lastLatLng = listLatLgs.get(listLatLgs.size() - 1);
+		try{
+
+//			measureNearestBts(location);
+			if(currentLatLang == null){
 				currentLatLang = new LatLng(location.getLatitude(),
 						location.getLongitude());
-				listLatLgs = new ArrayList<LatLng>();
-				listLatLgs.add(lastLatLng);
-				listLatLgs.add(currentLatLang);
-				PolylineOptions polylineOptions = new PolylineOptions();
-				polylineOptions.addAll(listLatLgs);
-				polylineOptions.color(signalManager.getColor());
-				polylineOptions.width(5);
-				polyline = googleMap.addPolyline(polylineOptions);
-				signalManager.setChange(false);
-			} else {
-				currentLatLang = new LatLng(location.getLatitude(),
-						location.getLongitude());
-				listLatLgs.add(currentLatLang);
-				polyline.setPoints(listLatLgs);
+				return;
 			}
-//		}
+//			if(isValidThreshold(currentLatLang, newLatLg)){
+//				Toast.makeText(mapTrackingFragment.getActivity(), "Location change", Toast.LENGTH_LONG).show();
+			String logitude = String.valueOf(location.getLongitude());
+			String latitude = String.valueOf(location.getLatitude());
+			String level = signalManager.getStringSignal();
+			String time = simpleDateFormat.format(new Date());
+			
+			TelephonyManager tm = (TelephonyManager) mapTrackingFragment.getActivity().getSystemService(mapTrackingFragment.getActivity().TELEPHONY_SERVICE);
+			GsmCellLocation locationGsm = (GsmCellLocation) tm.getCellLocation();
+			String cellId = String.valueOf(locationGsm.getCid());
+			String lac = String.valueOf(locationGsm.getLac());
+			String networkType = getNetworkType(tm);
+			
+			TrackingData data = new TrackingData();
+			data.setLogitude(logitude);
+			data.setLatitude(latitude);
+			data.setLevel(level);
+			data.setTime(time);
+			data.setLAC(lac);
+			data.setCellId(cellId);
+			data.setNetworkType(networkType);
+			findBtsHandler(locationGsm.getCid(), data, location);
+			DataSingleton.getInstance(mapTrackingFragment.getActivity()).getListTrackingData().add(data);
+			DataSingleton.getInstance(mapTrackingFragment.getActivity()).notifyDataChange();
+				if (signalManager.isChange()) {
+					
+					if(listLatLgs == null){
+						listLatLgs = new ArrayList<LatLng>();
+						listLatLgs.add(new LatLng(location.getLatitude(),
+							location.getLongitude()));
+					}
+					LatLng lastLatLng = listLatLgs.get(listLatLgs.size() - 1);
+					currentLatLang = new LatLng(location.getLatitude(),
+							location.getLongitude());
+					listLatLgs = new ArrayList<LatLng>();
+					listLatLgs.add(lastLatLng);
+					listLatLgs.add(currentLatLang);
+					PolylineOptions polylineOptions = new PolylineOptions();
+					polylineOptions.addAll(listLatLgs);
+					polylineOptions.color(signalManager.getColor());
+					polylineOptions.width(5);
+					polyline = googleMap.addPolyline(polylineOptions);
+					signalManager.setChange(false);
+				} else {
+					currentLatLang = new LatLng(location.getLatitude(),
+							location.getLongitude());
+					listLatLgs.add(currentLatLang);
+					polyline.setPoints(listLatLgs);
+				}
+//			}
+		}
+		catch(NullPointerException ex){
+			
+		}
 		
 
 	}
@@ -258,12 +264,14 @@ public class MapTrackingBeans implements Constants {
 //						distance = gps2m(btsLocation.getLatitude(), btsLocation.getLongitude(), location.getLatitude(), location.getLongitude());
 						Double jarak = new Double(new DecimalFormat("##.##").format(distance));
 						trackingData.setJarak(distance);
+						currentNearstMarker = nearestMarker;
 						break;
 					}
 				}
 			}
+			
 		}
-		if(currentNearstMarker != null && nearestMarker != null && nearestMarker != currentNearstMarker){
+		if(currentNearstMarker != null && nearestMarker == null && nearestMarker != currentNearstMarker){
 			currentNearstMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.icon_tower_black));
 		}
 	}

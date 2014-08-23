@@ -88,42 +88,47 @@ GooglePlayServicesClient.OnConnectionFailedListener{
 					
 					@Override
 					public void run() {
-						for (final TrackingData trackingData : trackingDatas) {
-							MapDemoFragment.this.getActivity().runOnUiThread(new Runnable() {
-								
-								@Override
-								public void run() {
-									demoBeans.onMyLocationChange(trackingData, map);
-									demoBeans.onSignalStrengthsChanged(Double.parseDouble(trackingData.getLevel()));
-									//Toast.makeText(DemoActivity.this, "data "+trackingData.getCellId(), Toast.LENGTH_LONG).show();
-									/*
-									 * textViewTime.setText("Time : " + data.getTime());
-				textViewLac.setText("Lac :" + data.getLAC());
-				
-				textViewNode.setText("Node : " + data.getNode());
-				textViewCellId.setText("Cell id : " + data.getCellId());
-				
-				textViewLevel.setText("Level : " + data.getLevel());
-				textViewLatitude.setText("Latitude : " + data.getLatitude());
-				
-				textViewLongitude.setText("Longitude : " + data.getLogitude());
-				textViewNetworkType.setText("Network Type : " + data.getNetworkType());
-				
-				textViewJarak.setText("Jarak : " + data.getJarak().intValue()+ "km");
-									 */
-									textViewKeterangan.setText("Longitude : "+trackingData.getLogitude()+" Latitude :" +trackingData.getLatitude() + 
-											"\nCellid : " + trackingData.getCellId() + "\nJarak : " + decimalFormat.format(trackingData.getJarak()) + " m\n"
-											+"Level Signal : "+trackingData.getLevel() + " dBm " + "Network Type :" + trackingData.getNetworkType() +"\n"
-											+ "LAC : " + trackingData.getLAC() ) ;
+						try{
+							for (final TrackingData trackingData : trackingDatas) {
+								MapDemoFragment.this.getActivity().runOnUiThread(new Runnable() {
+									
+									@Override
+									public void run() {
+										demoBeans.onMyLocationChange(trackingData, map);
+										demoBeans.onSignalStrengthsChanged(Double.parseDouble(trackingData.getLevel()));
+										//Toast.makeText(DemoActivity.this, "data "+trackingData.getCellId(), Toast.LENGTH_LONG).show();
+										/*
+										 * textViewTime.setText("Time : " + data.getTime());
+					textViewLac.setText("Lac :" + data.getLAC());
+					
+					textViewNode.setText("Node : " + data.getNode());
+					textViewCellId.setText("Cell id : " + data.getCellId());
+					
+					textViewLevel.setText("Level : " + data.getLevel());
+					textViewLatitude.setText("Latitude : " + data.getLatitude());
+					
+					textViewLongitude.setText("Longitude : " + data.getLogitude());
+					textViewNetworkType.setText("Network Type : " + data.getNetworkType());
+					
+					textViewJarak.setText("Jarak : " + data.getJarak().intValue()+ "km");
+										 */
+										textViewKeterangan.setText("Longitude : "+trackingData.getLogitude()+" Latitude :" +trackingData.getLatitude() + 
+												"\nCellid : " + trackingData.getCellId() + "\nJarak : " + decimalFormat.format(trackingData.getJarak()) + " m\n"
+												+"Level Signal : "+trackingData.getLevel() + " dBm " + "Network Type :" + trackingData.getNetworkType() +"\n"
+												+ "LAC : " + trackingData.getLAC() ) ;
+									}
+								});
+								try {
+									Thread.sleep(1000);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
 								}
-							});
-							try {
-								Thread.sleep(1000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+								Log.d("data tracking", trackingData.getLogitude());
 							}
-							Log.d("data tracking", trackingData.getLogitude());
+						}
+						catch (NullPointerException ed){
+							Log.d("exception", ed.toString());
 						}
 					}
 				}).start();

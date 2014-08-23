@@ -27,7 +27,6 @@ public class SplashScreenActivity extends Activity {
 		startActivity(new Intent(this, MainActivity.class));
 		finish();
 	}
-	
 	public void initialData(Context context){
 		BtsData btsData = new BtsData("Belimbing 1", 112.638, -7.9418);
 		btsData.getListBtsCellId().add(77148406);
@@ -36,6 +35,13 @@ public class SplashScreenActivity extends Activity {
 		btsData.getListBtsCellId().add(77147018);
 		btsData.getListBtsCellId().add(77147016);
 		btsData.getListBtsCellId().add(77147013);
+		btsData.getListBtsCellId().add(51543);
+		btsData.getListBtsCellId().add(51546);
+		btsData.getListBtsCellId().add(77144305);
+		btsData.getListBtsCellId().add(77144303);
+		btsData.getListBtsCellId().add(77151595);
+		btsData.getListBtsCellId().add(77148404);
+		
 		
 		
 		DataSingleton.getInstance(context).getListBtsDatas().add(btsData);
@@ -54,6 +60,15 @@ public class SplashScreenActivity extends Activity {
 		btsData.getListBtsCellId().add(62694);
 		btsData.getListBtsCellId().add(62696);
 		btsData.getListBtsCellId().add(61586);
+		btsData.getListBtsCellId().add(77148205);
+		btsData.getListBtsCellId().add(77149403);
+		btsData.getListBtsCellId().add(77148204);
+		btsData.getListBtsCellId().add(77144293);
+		btsData.getListBtsCellId().add(77149395);
+		
+		
+		
+		
 		
 		
 		DataSingleton.getInstance(context).getListBtsDatas().add(btsData);
@@ -63,6 +78,13 @@ public class SplashScreenActivity extends Activity {
 		btsData.getListBtsCellId().add(62345);
 		btsData.getListBtsCellId().add(62346);
 		btsData.getListBtsCellId().add(29661);
+		btsData.getListBtsCellId().add(77148173);
+		btsData.getListBtsCellId().add(77148175);
+		btsData.getListBtsCellId().add(23441);
+		btsData.getListBtsCellId().add(59944);
+	
+		
+	
 		
 		
 		
@@ -84,16 +106,20 @@ public class SplashScreenActivity extends Activity {
 		btsData.getListBtsCellId().add(77148188);
 		btsData.getListBtsCellId().add(77149416);
 		btsData.getListBtsCellId().add(52453);
+		btsData.getListBtsCellId().add(22899);
+		btsData.getListBtsCellId().add(22890);
+		
 		
 		
 		
 		
 		DataSingleton.getInstance(context).getListBtsDatas().add(btsData);
 		btsData = new BtsData("Junrejo", 112.57601211, -7.90128214);
-		btsData.getListBtsCellId().add(59391);
+		btsData.getListBtsCellId().add(77148465);
 		btsData.getListBtsCellId().add(59392);
 		btsData.getListBtsCellId().add(77148464);
-		btsData.getListBtsCellId().add(77148463);
+		
+		
 		
 		
 		DataSingleton.getInstance(context).getListBtsDatas().add(btsData);
@@ -104,7 +130,8 @@ public class SplashScreenActivity extends Activity {
 		btsData.getListBtsCellId().add(22904);
 		btsData.getListBtsCellId().add(77149413);
 		btsData.getListBtsCellId().add(77146817);
-	
+		btsData.getListBtsCellId().add(77146814);
+		
 		
 		
 		
@@ -112,5 +139,4 @@ public class SplashScreenActivity extends Activity {
 		DataSingleton.getInstance(context).getListBtsDatas().add(btsData);
 		DataSingleton.getInstance(context).saveAllData(context);
 	}
-	
 }
